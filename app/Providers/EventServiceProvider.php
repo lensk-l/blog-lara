@@ -18,6 +18,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\PostHasViewed' => [
+            'App\Listeners\ViewsCounter',
+        ],
+        'App\Events\PostHasLiked' => [
+            'App\Listeners\LikeCounter'
+        ]
     ];
 
     /**
@@ -30,3 +36,4 @@ class EventServiceProvider extends ServiceProvider
         //
     }
 }
+

@@ -10,6 +10,6 @@ class Category extends Model
     use HasFactory;
 
     public function article() {
-        return $this->hasMany(Article::class, 'id');
+        return $this->hasMany(Article::class, 'category_id');
     }
 }

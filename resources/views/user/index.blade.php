@@ -23,13 +23,9 @@
 </head>
 <body>
 
-@if(Route::currentRouteName() == 'auth')
-@include('user.auth')
-@endif
+@yield('content')
 
-@if(Route::currentRouteName() == 'registration')
-    @include('user.register')
-@endif
+
 
 
 

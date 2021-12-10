@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,19 +15,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [ArticleController::class, 'showAll'])->name('allArticles')->middleware(['auth']);
+Route::get('/author/{author}', [ArticleController::class, 'showByAuthor'])->name('allByAuthor')->middleware(['auth']);
+Route::get('/subscribe/{author}', [ArticleController::class, 'subscribe'])->name('subscribe')->middleware(['auth']);
+Route::get('/like/{author}', [ArticleController::class, 'like'])->name('like')->middleware(['auth']);
+Route::get('/unsubscribe/{author}', [ArticleController::class, 'unsubscribe'])->name('unsubscribe')->middleware(['auth']);
+Route::get('/subscribes', [ArticleController::class, 'allSubscribe'])->name('allSubscribes')->middleware(['auth']);
+Route::get('/search', [ArticleController::class, 'search'])->name('search')->middleware(['auth']);
+Route::get('/category/{name}', [CategoryController::class, 'show'])->name('category_show')->middleware(['auth']);
+Route::resource('article', ArticleController::class)->middleware(['auth']);
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::resource('article',Article::class);
 
-Route::get('/auth', function (){ return view('user.index'); })->name('auth');
-
-Route::get('/registration', function (){ return view('user.index');})->name('registration');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';

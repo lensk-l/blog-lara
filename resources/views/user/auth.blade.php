@@ -1,4 +1,5 @@
-
+@extends('user.index')
+@section('content')
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -6,13 +7,19 @@
                 <img src="/img/img-01.png" alt="IMG">
             </div>
 
-            <form mathod="POST" action="{{ route('login') }}"  class="login100-form validate-form">
+            <form method="POST" action="{{ route('login') }}"  class="login100-form validate-form">
+                @csrf
 					<span class="login100-form-title">
 						Member Login
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="email" id="email" name="email" placeholder="Email">
+                    <input class="input100 @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="Email">
+                    @error('email')
+                    <span class="txt1" role="alert">
+                                        <p  class="txt1">{{ $message }}</p>
+                                    </span>
+                    @enderror
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -20,7 +27,12 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                    <input class="input100" type="password" name="passwword" placeholder="Password">
+                    <input class="input100 @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password">
+                    @error('password')
+                    <span class="txt1" role="alert">
+                                        <p  class="txt1">{{ $message }}</p>
+                                    </span>
+                    @enderror
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -46,7 +58,7 @@
                 </div>
 
                 <div class="text-center">
-                    <a class="txt2" href="{{route('registration')}}">
+                    <a class="txt2" href="{{route('register')}}">
                         {{ __('Register') }}
                         <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                     </a>
@@ -55,7 +67,5 @@
         </div>
     </div>
 </div>
-
-
-
+@endsection
 

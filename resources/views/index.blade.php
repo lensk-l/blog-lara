@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/img/favicon.ico">
-    <title>Blog</title>
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/css/mediumish.css" rel="stylesheet">
+    @include('style')
 </head>
-<body>
+<body class="bg-faded" >
+
 
 <!-- Begin Nav
 ================================================== -->
@@ -25,7 +14,7 @@
 
 <!-- Begin Site Title
 ================================================== -->
-<div class="container">
+<div class="container bg-faded">
     <div class="mainheading">
         <h1 class="sitetitle">About blog</h1>
         <p class="lead">
@@ -35,20 +24,9 @@
     <!-- End Site Title
     ================================================== -->
 
-    <!-- Begin Featured
-    ================================================== -->
-{{--    @include('modules.futured')--}}
-        @section('futured')
-        @yield('content')
-        @endsection
-{{--    todo - как блять подключить секцию???--}}
-
-    <!-- End Featured
-    ================================================== -->
-
     <!-- Begin List Posts
     ================================================== -->
-    @include('modules.all_stories')
+    @include('articles.author_stories')
     <!-- End List Posts
     ================================================== -->
 
